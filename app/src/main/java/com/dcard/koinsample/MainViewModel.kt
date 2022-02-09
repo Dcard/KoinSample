@@ -7,12 +7,12 @@ import com.dcard.component.NormalAtm
 /**
  * @author Batu
  */
-class MainViewModel : ViewModel() {
+class MainViewModel(
+    private val atm: NormalAtm
+) : ViewModel() {
 
     val amount: LiveData<Int>
         get() = atm.amount
-
-    private val atm: NormalAtm = NormalAtm()
 
     fun onDeposit(value: Int) {
         atm.onDeposit(value)
