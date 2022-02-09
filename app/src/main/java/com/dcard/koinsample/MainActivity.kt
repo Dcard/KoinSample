@@ -1,12 +1,14 @@
 package com.dcard.koinsample
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.dcard.koinsample.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -14,26 +16,39 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         setupViews()
+        setupViewModel()
     }
 
-    private fun setupViews(){
+    private fun setupViews() {
 
         binding.apply {
             depositButton.setOnClickListener {
+                viewModel.onDeposit(editText.text.toString().toInt())
                 cleanInput()
             }
 
             withdrawButton.setOnClickListener {
+                viewModel.onWithdraw(editText.text.toString().toInt())
                 cleanInput()
             }
 
             remitButton.setOnClickListener {
+                viewModel.onRemit(editText.text.toString().toInt())
                 cleanInput()
             }
         }
     }
 
-    private fun cleanInput(){
+    private fun setupViewModel() {
+        val owner = this
+        viewModel.apply {
+            amount.observe(owner) { value ->
+                binding.amountTextView.text = (value ?: 0).toString()
+            }
+        }
+    }
+
+    private fun cleanInput() {
         binding.editText.text = null
     }
 }
