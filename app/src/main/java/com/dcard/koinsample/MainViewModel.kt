@@ -1,8 +1,8 @@
 package com.dcard.koinsample
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.dcard.component.NormalAtm
 
 /**
  * @author Batu
@@ -10,22 +10,19 @@ import androidx.lifecycle.ViewModel
 class MainViewModel : ViewModel() {
 
     val amount: LiveData<Int>
-        get() = _amout
+        get() = atm.amount
 
-    private val _amout = MutableLiveData<Int>().apply {
-        value = 10000
-    }
+    private val atm: NormalAtm = NormalAtm()
 
     fun onDeposit(value: Int) {
-        _amout.value = _amout.value?.plus(value)
+        atm.onDeposit(value)
     }
 
     fun onWithdraw(value: Int) {
-        _amout.value = _amout.value?.minus(value)
+        atm.onWithdraw(value)
     }
 
     fun onRemit(value: Int) {
-        val total = (value * 1.1f).toInt()
-        _amout.value = _amout.value?.minus(total)
+        atm.onRemit(value)
     }
 }
