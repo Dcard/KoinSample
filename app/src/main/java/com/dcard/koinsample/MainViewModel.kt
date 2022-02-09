@@ -2,13 +2,13 @@ package com.dcard.koinsample
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.dcard.component.NormalAtm
+import com.dcard.component.AtmProvider
 
 /**
  * @author Batu
  */
 class MainViewModel(
-    private val atm: NormalAtm
+    private val atm: AtmProvider
 ) : ViewModel() {
 
     val amount: LiveData<Int>

@@ -2,19 +2,26 @@ package com.dcard.koinsample
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.dcard.component.AtmProvider
 import com.dcard.component.NormalAtm
 
 /**
  * @author Batu
  */
 class MyViewModelFactory(
-    private val normalAtm: NormalAtm
+    private val useCase: UseCase
 ) : ViewModelProvider.NewInstanceFactory() {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return modelClass.getDeclaredConstructor(
-            NormalAtm::class.java
+            AtmProvider::class.java
         ).newInstance(
-            normalAtm
+            getAtmInstance()
         )
+    }
+
+    private fun getAtmInstance(): AtmProvider {
+        return when (useCase) {
+            UseCase.Normal -> NormalAtm()
+        }
     }
 }

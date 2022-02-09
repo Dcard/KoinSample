@@ -3,14 +3,13 @@ package com.dcard.koinsample
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.dcard.component.NormalAtm
 import com.dcard.koinsample.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val viewModel: MainViewModel by viewModels {
-        MyViewModelFactory(NormalAtm())
+        MyViewModelFactory(UseCase.Normal)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

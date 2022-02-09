@@ -6,9 +6,9 @@ import androidx.lifecycle.MutableLiveData
 /**
  * @author Batu
  */
-class NormalAtm {
+class NormalAtm : AtmProvider {
 
-    val amount: LiveData<Int>
+    override val amount: LiveData<Int>
         get() = _amout
 
     private val _amout = MutableLiveData<Int>().apply {
@@ -23,15 +23,15 @@ class NormalAtm {
         _amout.value = 10000
     }
 
-    fun onDeposit(value: Int) {
+    override fun onDeposit(value: Int) {
         _amout.value = _amout.value?.plus(value)
     }
 
-    fun onWithdraw(value: Int) {
+    override fun onWithdraw(value: Int) {
         _amout.value = _amout.value?.minus(value)
     }
 
-    fun onRemit(value: Int) {
+    override fun onRemit(value: Int) {
         val total = (value * 1.1f).toInt()
         _amout.value = _amout.value?.minus(total)
     }
