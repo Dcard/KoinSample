@@ -1,15 +1,16 @@
 package com.dcard.koinsample
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.dcard.koinsample.databinding.ActivityMainBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val viewModel: MainViewModel by viewModels {
-        MyViewModelFactory(UseCase.Normal)
+    private val viewModel: MainViewModel by viewModel {
+        parametersOf(UseCase.Normal)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
