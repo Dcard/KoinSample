@@ -1,4 +1,4 @@
-package com.dcard.component
+package com.dcard.capability
 
 import androidx.lifecycle.LiveData
 

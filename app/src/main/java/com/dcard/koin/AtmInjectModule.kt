@@ -1,9 +1,9 @@
 package com.dcard.koin
 
-import com.dcard.component.AtmProvider
+import com.dcard.capability.AtmProvider
 import com.dcard.component.NormalAtm
-import com.dcard.koinsample.MainViewModel
-import com.dcard.koinsample.UseCase
+import com.dcard.feature.AtmViewModel
+import com.dcard.feature.UseCase
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.parameter.parametersOf
 import org.koin.dsl.module
@@ -13,7 +13,7 @@ import org.koin.dsl.module
  */
 val atmInjectModule = module {
     viewModel { params ->
-        MainViewModel(
+        AtmViewModel(
             get { parametersOf(params.get()) }
         )
     }

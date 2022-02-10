@@ -2,6 +2,7 @@ package com.dcard.component
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.dcard.capability.AtmProvider
 
 /**
  * @author Batu

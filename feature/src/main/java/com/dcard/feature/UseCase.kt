@@ -1,4 +1,4 @@
-package com.dcard.koinsample
+package com.dcard.feature
 
 /**
  * @author Batu

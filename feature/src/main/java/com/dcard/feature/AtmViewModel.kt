@@ -1,18 +1,18 @@
-package com.dcard.koinsample
+package com.dcard.feature
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.dcard.component.AtmProvider
+import com.dcard.capability.AtmProvider
 
 /**
  * @author Batu
  */
-class MainViewModel(
+class AtmViewModel(
     private val atm: AtmProvider
 ) : ViewModel() {
 
     val amount: LiveData<Int>
-        get() = atm.amount
+    get() = atm.amount
 
     fun onDeposit(value: Int) {
         atm.onDeposit(value)
